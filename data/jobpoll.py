@@ -5,6 +5,8 @@ from azure.cosmos.partition_key import PartitionKey
 import datetime
 import time
 import os
+import sys
+import configparser
 
 import config
 
@@ -30,10 +32,10 @@ def job_poll():
     client = cosmos_client.CosmosClient(HOST, {'masterKey': MASTER_KEY}, user_agent="CosmosDBPythonQuickstart", user_agent_overwrite=True)
     try:
         db = client.get_database_client(DATABASE_ID)
-        print('Database with id \'{0}\' opened'.format(DATABASE_ID))
+        #print('Database with id \'{0}\' opened'.format(DATABASE_ID))
 
         container = db.get_container_client(CONTAINER_ID)
-        print('Container with id \'{0}\' opened'.format(CONTAINER_ID))        
+        #print('Container with id \'{0}\' opened'.format(CONTAINER_ID))        
                     
         items = list(container.query_items(        
             query="SELECT * FROM r WHERE r.state=@jobstate",
@@ -48,6 +50,15 @@ def job_poll():
         os.environ['PROTEIN_POLL_DOCID']=items[0].get("id")
         os.environ['PROTEIN_POLL_CURJOBID']=items[0].get("jobid")
         os.environ['PROTEIN_POLL_INPUTURL']=items[0].get("inputblobURL")
+        #os.chdir("")
+        cf = configparser.ConfigParser()
+        cf.add_section("jobpoll")
+        cf.set("jobpoll", "arriving", "1")
+        cf.set("jobpoll", "seqstr", items[0].get("strseq"))
+        cf.set("jobpoll", "curjobid", items[0].get("jobid"))
+        with open("hackjob.ini","w+") as f:
+            cf.write(f)
+
         print(items[0].get("inputblobURL"))
         
     except exceptions.CosmosHttpResponseError as e:
@@ -57,7 +68,7 @@ def job_poll():
         print("\nPoll exit")
 
 
-def job_tag(docid, strjobid):
+def job_tag(strjobid):
     client = cosmos_client.CosmosClient(HOST, {'masterKey': MASTER_KEY}, user_agent="CosmosDBPythonQuickstart", user_agent_overwrite=True)
     try:
         db = client.get_database_client(DATABASE_ID)
@@ -66,6 +77,16 @@ def job_tag(docid, strjobid):
         container = db.get_container_client(CONTAINER_ID)
         print('Container with id \'{0}\' opened'.format(CONTAINER_ID))                          
         
+        items = list(container.query_items(        
+            query="SELECT * FROM r WHERE r.jobid=@jobid",
+            parameters=[
+                { "name":"@jobid", "value": strjobid }
+            ],               
+            enable_cross_partition_query=True,
+            max_item_count=1
+        ))
+        docid = items[0].get("id")
+
         read_item = container.read_item(item=docid, partition_key=strjobid)
         read_item['state'] = 'RUNNING'
         response = container.replace_item(item=read_item, body=read_item)
@@ -148,6 +169,7 @@ def job_pushresult(strjobid, urlBlobResult):
 if __name__ == '__main__':
     job_poll()       
     #=items[0].get("id")
+    #job_tag(sys.arg[1])
     #job_tag(os.environ['PROTEIN_POLL_DOCID'], os.environ['PROTEIN_POLL_CURJOBID'])
 
     #job_refreshstatus(os.environ['PROTEIN_POLL_CURJOBID'], "Status testing string")
