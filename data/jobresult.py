@@ -9,18 +9,6 @@ import sys
 import configparser
 import config
 
-# ----------------------------------------------------------------------------------------------------------
-# Prerequistes -
-#
-# 1. An Azure Cosmos account -
-#    https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal#create-an-azure-cosmos-db-account
-#
-# 2. Microsoft Azure Cosmos PyPi package -
-#    https://pypi.python.org/pypi/azure-cosmos/
-# ----------------------------------------------------------------------------------------------------------
-# Sample - demonstrates the basic CRUD operations on a Item resource for Azure Cosmos
-# ----------------------------------------------------------------------------------------------------------
-
 HOST = config.settings['host']
 MASTER_KEY = config.settings['master_key']
 DATABASE_ID = config.settings['database_id']
