@@ -32,11 +32,11 @@ def job_poll():
             enable_cross_partition_query=True,
             max_item_count=1
         ))
-        os.environ['PROTEIN_POLL_ARRIVING']='1'
-        os.environ['PROTEIN_POLL_SEQSTR']=items[0].get("inputfilestring")
-        os.environ['PROTEIN_POLL_DOCID']=items[0].get("id")
-        os.environ['PROTEIN_POLL_CURJOBID']=items[0].get("jobid")
-        os.environ['PROTEIN_POLL_INPUTURL']=items[0].get("inputblobURL")
+        #os.environ['PROTEIN_POLL_ARRIVING']='1'
+        #os.environ['PROTEIN_POLL_SEQSTR']=items[0].get("inputfilestring")
+        #os.environ['PROTEIN_POLL_DOCID']=items[0].get("id")
+        #os.environ['PROTEIN_POLL_CURJOBID']=items[0].get("jobid")
+        #os.environ['PROTEIN_POLL_INPUTURL']=items[0].get("inputblobURL")
         #os.chdir("")
         cf = configparser.ConfigParser()
         cf.add_section("jobpoll")
@@ -46,7 +46,7 @@ def job_poll():
         with open("hackjob.ini","w+") as f:
             cf.write(f)
 
-        print(items[0].get("inputblobURL"))
+        #print(items[0].get("inputblobURL"))
         
     except exceptions.CosmosHttpResponseError as e:
         print('\nJob polling caught an error. {0}'.format(e.message))
