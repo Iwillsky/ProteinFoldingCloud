@@ -1,0 +1,104 @@
+body {
+    background-color: #fff;
+}
+
+.content {
+    background-color: #fff;
+    margin: auto;
+    overflow: auto;
+    padding: 40px;
+    text-align: center;
+    max-width: 800px;
+    padding-top: 0;
+}
+
+#demo-file::file-selector-button {
+	border: 2px solid #555555;
+	color: #555555;
+	padding: 8px;
+	border-radius: 4px;
+	background-color: #ffffff;
+}
+
+#demo-file::file-selector-button:hover {
+	background-color: #e9e9e9;
+}
+
+#demo-file::-webkit-file-upload-button, #submit-button {
+	border: 2px solid #555555;
+	color: #555555;
+	padding: 8px;
+	border-radius: 4px;
+	background-color: #ffffff;
+}
+
+#demo-file::-webkit-file-upload-button:hover, #submit-button:hover  {
+	background-color: #e9e9e9;
+}
+
+#jobs-box {
+    overflow-wrap: break-word;
+    text-align: left;
+}
+
+.field-name {
+    color: #414141;
+    display: inline-block;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.some-page-wrapper {
+    height: 500px;
+    overflow-y: scroll;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.orange-column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+}
+
+.blue-column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 4;
+}
+
+.green-column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 16;
+    max-width: 500px;
+}
+
+.list-group {
+    padding: 20px 0;
+    border-radius: 0px;
+    border-bottom: 1px solid gray;
+}
+
+#uploaded-details {
+    text-align: left;
+}
+
+#jobs-box h6 {
+    padding: 20px 0;
+}
+
+form h5 {
+    line-height: 34px;
+    margin: auto;
+    margin-bottom: 20px;
+    width: 600px;
+}

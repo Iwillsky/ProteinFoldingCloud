@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+{%block content%}
+<img src="/static/folding-protein.gif" alt="folding protein" height="140" />
+<form action="/" method="POST" enctype="multipart/form-data">
+    <h5>{{msg}}</h5>
+    <br>
+    <p><input type="file" name="file_name" id="demo-file" /></p>
+    <p><input type="submit" value="Submit" id="submit-button"></p>
+</form>
+<br>
+<div id="jobs-box">
+<h6>Submitted Folding Jobs:</h6>
+<div class="some-page-wrapper">
+{%for i in range(0, len)%}
+<div class="list-group">
+    <div class="row">
+        <div class='orange-column'>
+            {{len-i}}
+        </div>
+        <div class="blue-column">
+            <span class="field-name">Status:</span>
+        </div>
+        <div class="green-column">
+            {{jobs[i].get('state')}}
+        </div>
+    </div>
+    <div class="row">
+        <div class='orange-column'>
+        </div>
+        <div class="blue-column">
+            <span class="field-name">Name:</span>
+        </div>
+        <div class="column green-column">
+            {{jobs[i].get('name')}}
+        </div>
+    </div>
+    <div class="row">
+        <div class='orange-column'>
+        </div>
+        <div class="blue-column">
+            <span class="field-name">Sequence:</span>
+        </div>
+        <div class="green-column">
+            {{jobs[i].get('inputfilestring')}}
+        </div>
+    </div>
+    <div class="row">
+        <div class='orange-column'>
+        </div>
+        <div class="blue-column">
+            <span class="field-name">Result:</span>
+        </div>
+        <div class="green-column">
+            {{jobs[i].get('resultfileURL')}}
+        </div>
+    </div>
+</div>
+{%endfor%}
+</div>
+</div>
+{%endblock content%}
