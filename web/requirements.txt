@@ -1,5 +1,6 @@
 azure-core==1.18.0
 azure-cosmos==4.2.0
+azure-storage-blob==12.9.0
 bson==0.5.10
 certifi==2021.5.30
 charset-normalizer==2.0.4
