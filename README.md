@@ -29,7 +29,9 @@ NOTICE: Due to backend resource cost charging, automatically job picking up is o
 ### Repo Structure
 
 · Web -- UI Interface for job submission 
+
 · Data -- Scripts of job polling connection and result pushing (currently using CosmosDB as accounting database)
+
 · HPC -- RoseTTAFold branch repo with parallelism enabled
 
 
