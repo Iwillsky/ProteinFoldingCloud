@@ -24,6 +24,15 @@ Thanks contribution from Hackathon teammates during Sep-Oct, 2021
  
   --> "Get result PDB protein foloding result"
 
+NOTICE: Due to backend resource cost charging, automatically job picking up is off by default. If you want to have a try please contact through this channel or mailto: iwillsky@163.com
+
+### Repo Structure
+
+· Web -- UI Interface for job submission 
+· Data -- Scripts of job polling connection and result pushing (currently using CosmosDB as accounting database)
+· HPC -- RoseTTAFold branch repo with parallelism enabled
+
+
 
 ### Samples
 
