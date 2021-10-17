@@ -20,7 +20,7 @@ Thanks contribution from Hackathon teammates during Sep-Oct, 2021
 
   --> Automatic running in backend HPC cluster 
  
-    --> "Get result PDB protein foloding result"
+  --> "Get result PDB protein foloding result"
 
 
 ### Samples
