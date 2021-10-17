@@ -6,6 +6,8 @@ Build Protein Folding as Service on Azure Cloud
 
 (Sponsored by MS Hackathon-2021 Program)
 
+License of RoseTTAFold follow the [link](https://github.com/Iwillsky/ProteinFoldingCloud/blob/main/hpc/LICENSE)
+
 ### Teams
 
 Thanks contribution from Hackathon teammates during Sep-Oct, 2021
