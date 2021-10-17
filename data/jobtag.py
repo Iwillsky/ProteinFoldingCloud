@@ -47,4 +47,4 @@ def job_tag(strjobid):
         print("\nJob update exit")
 
 if __name__ == '__main__':
-    job_tag(sys.arg[1])
+    job_tag(sys.argv[1])
